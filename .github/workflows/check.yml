@@ -1,0 +1,21 @@
+name: Check
+
+on: pull_request
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run the script
+        run: chmod +x ${GITHUB_WORKSPACE}/script.sh && sh ${GITHUB_WORKSPACE}/script.sh
+
+      - name: DNSControl check
+        uses: koenrh/dnscontrol-action@v3.18.1
+        with:
+          args: check
+
+          # Optionally, if your DNSConfig files are in a non-default location,
+          # you could specify the paths to the config and credentials file.
+          config_file: 'dns/dnsconfig.js'

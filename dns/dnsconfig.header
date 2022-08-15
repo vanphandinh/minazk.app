@@ -1,0 +1,6 @@
+var REG_NONE = NewRegistrar('none');    // No registrar.
+var DSP_CLOUDFLARE = NewDnsProvider('cloudflare');  // Cloudflare
+
+// DNS Records:
+D('minazk.app', REG_NONE, DnsProvider(DSP_CLOUDFLARE),
+A('@', '8.8.8.8', CF_PROXY_ON),
